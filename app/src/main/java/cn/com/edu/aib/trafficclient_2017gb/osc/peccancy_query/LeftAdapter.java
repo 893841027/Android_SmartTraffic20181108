@@ -7,6 +7,8 @@ import android.widget.BaseAdapter;
 
 import java.util.List;
 
+import cn.com.edu.aib.trafficclient_2017gb.R;
+
 /**
  * Created by teacher on 2018/11/8.
  */
@@ -14,7 +16,7 @@ import java.util.List;
 public class LeftAdapter extends BaseAdapter{
 
     Activity activity;
-    List<LeftBean> list;
+    List list;
 
     public LeftAdapter(Activity activity, List list) {
         this.activity = activity;
@@ -38,7 +40,7 @@ public class LeftAdapter extends BaseAdapter{
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-
+        convertView = View.inflate(activity, R.layout.left_item,null);
         return convertView;
     }
 }

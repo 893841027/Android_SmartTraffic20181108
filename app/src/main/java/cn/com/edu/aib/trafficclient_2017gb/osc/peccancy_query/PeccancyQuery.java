@@ -29,8 +29,8 @@ import cn.com.edu.aib.trafficclient_2017gb.osc.utils.SQLHelper;
 
 public class PeccancyQuery extends Fragment{
 
-    List<LeftBean> leftlist = new ArrayList<>();
-    List<RightBean> rightlist = new ArrayList<>();
+    List leftlist = new ArrayList<>();
+    List rightlist = new ArrayList<>();
     private ListView leftview;
     private ListView rightview;
     SQLHelper sqlHelper;
@@ -60,6 +60,15 @@ public class PeccancyQuery extends Fragment{
         rightAdapter = new RightAdapter(getActivity(),rightlist);
         rightview.setAdapter(rightAdapter);
 
+        for(int i = 0 ; i < 10 ; i++){
+            leftlist.add(i);
+            rightlist.add(i);
+        }
+
+        leftAdapter.notifyDataSetChanged();
+        rightAdapter.notifyDataSetChanged();
+
+
 
         add.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -78,7 +87,7 @@ public class PeccancyQuery extends Fragment{
 
         return view;
     }
-
+/*
     void addquery(String in_catnum){
         boolean exsiti = false;
         if(leftlist.size()>0){
@@ -139,5 +148,5 @@ public class PeccancyQuery extends Fragment{
         });
 
     }
-
+*/
 }

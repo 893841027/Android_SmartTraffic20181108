@@ -7,6 +7,8 @@ import android.widget.BaseAdapter;
 
 import java.util.List;
 
+import cn.com.edu.aib.trafficclient_2017gb.R;
+
 /**
  * Created by teacher on 2018/11/8.
  */
@@ -38,7 +40,7 @@ public class RightAdapter extends BaseAdapter{
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-
+        convertView = View.inflate(activity, R.layout.right_item,null);
         return convertView;
     }
 }

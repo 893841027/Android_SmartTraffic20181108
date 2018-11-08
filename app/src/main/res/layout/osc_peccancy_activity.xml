@@ -67,16 +67,17 @@
         android:layout_marginLeft="5dp"
         android:layout_marginRight="10dp"
         android:layout_weight="1"
+        android:orientation="vertical"
         android:background="#ccc"
         android:layout_width="1dp"
         android:layout_height="match_parent">
 
 
             <TextView
+                android:layout_margin="10dp"
                 android:layout_width="wrap_content"
                 android:textColor="#333"
-                android:layout_weight="1"
-                android:text="汽车资料卡片"
+                android:text="违章详情"
                 android:textSize="22sp"
                 android:textStyle="bold"
                 android:singleLine="true"
@@ -84,9 +85,10 @@
 
 
         <ListView
+            android:layout_weight="1"
             android:id="@+id/pecc_rightlist"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="1dp">
 
         </ListView>
 

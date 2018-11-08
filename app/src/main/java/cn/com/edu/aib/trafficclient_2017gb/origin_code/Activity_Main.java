@@ -148,8 +148,7 @@ public class Activity_Main extends FragmentActivity {
                     startActivity(intent);
 
                 }else if (str.equals("公交查询")) {
-                    /*getSupportFragmentManager().beginTransaction().replace(R.id.maincontent, new Setting2()).commit();
-                    tV_title.setText(actionTexts[arg2]);*/
+
 
                     Intent intent = new Intent(Activity_Main.this, BusMainActivity.class);
                     startActivity(intent);
