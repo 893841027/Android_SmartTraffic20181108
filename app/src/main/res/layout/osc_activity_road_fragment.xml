@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <cn.com.edu.aib.trafficclient_2017gb.osc.roadview.RoadView
+        android:id="@+id/road_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <ImageView
+        android:id="@+id/road_refresh"
+        android:layout_alignParentRight="true"
+        android:layout_margin="32dp"
+        android:layout_width="32dp"
+        android:src="@mipmap/refresh"
+        android:layout_height="32dp" />
+
+</RelativeLayout>

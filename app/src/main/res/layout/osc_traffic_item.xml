@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="40dp">
+
+
+        <TextView
+            android:id="@+id/tra_road"
+            android:background="@drawable/osc_tra_stroke"
+            android:layout_width="1dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textColor="#333"
+            android:text="路口"
+            android:textSize="18sp"
+            android:textStyle="normal"
+            android:singleLine="true"
+            android:layout_height="match_parent" />
+
+        <TextView
+            android:id="@+id/tra_red"
+            android:background="@drawable/osc_tra_stroke"
+            android:layout_width="1dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textColor="#333"
+            android:text="红灯时长"
+            android:textSize="18sp"
+            android:textStyle="normal"
+            android:singleLine="true"
+            android:layout_height="match_parent" />
+
+        <TextView
+            android:id="@+id/tra_yellow"
+            android:background="@drawable/osc_tra_stroke"
+            android:layout_width="1dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textColor="#333"
+            android:text="黄灯时长"
+            android:textSize="18sp"
+            android:textStyle="normal"
+            android:singleLine="true"
+            android:layout_height="match_parent" />
+
+        <TextView
+            android:id="@+id/tra_green"
+            android:background="@drawable/osc_tra_stroke"
+            android:layout_width="1dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textColor="#333"
+            android:text="绿灯时长"
+            android:textSize="18sp"
+            android:textStyle="normal"
+            android:singleLine="true"
+            android:layout_height="match_parent" />
+
+            <RelativeLayout
+                android:background="@drawable/osc_tra_stroke"
+                android:layout_weight="1"
+                android:layout_width="1dp"
+                android:layout_height="match_parent">
+
+                <CheckBox
+                    android:id="@+id/tra_check"
+                    android:layout_width="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_height="wrap_content" />
+
+            </RelativeLayout>
+
+
+        <RelativeLayout
+            android:background="@drawable/osc_tra_stroke"
+            android:layout_weight="1"
+            android:layout_width="1dp"
+            android:layout_height="match_parent">
+
+        <Button
+            android:layout_centerInParent="true"
+            android:id="@+id/tra_set"
+            android:layout_width="wrap_content"
+            android:text="设置"
+            android:layout_height="wrap_content" />
+
+        </RelativeLayout>
+
+
+
+
+    </LinearLayout>
+
+</LinearLayout>

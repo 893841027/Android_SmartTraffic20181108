@@ -26,6 +26,9 @@ import java.util.List;
 import java.util.Map;
 
 import cn.com.edu.aib.trafficclient_2017gb.R;
+import cn.com.edu.aib.trafficclient_2017gb.osc.peccancy_query.PeccancyQuery;
+import cn.com.edu.aib.trafficclient_2017gb.osc.roadview.RoadFragment;
+import cn.com.edu.aib.trafficclient_2017gb.osc.trafficlight.TrafficFragment;
 
 /**
  * @author zhaowei
@@ -141,15 +144,17 @@ public class Activity_Main extends FragmentActivity {
                     tV_title.setText(actionTexts[arg2]);*/
 
                 }else if (str.equals("红绿灯管理")) {
-
+                    tV_title.setText("红绿灯管理");
+                    getSupportFragmentManager().beginTransaction().replace(R.id.maincontent, new TrafficFragment()).commit();
 
                 }else if (str.equals("车辆违章")) {
-
+                    tV_title.setText("车辆违章");
+                    getSupportFragmentManager().beginTransaction().replace(R.id.maincontent, new PeccancyQuery()).commit();
 
 
                 }else if (str.equals("路况查询")) {
-                    /*getSupportFragmentManager().beginTransaction().replace(R.id.maincontent, new TrafficLight()).commit();
-                    tV_title.setText(actionTexts[arg2]);*/
+                    tV_title.setText("路况查询");
+                    getSupportFragmentManager().beginTransaction().replace(R.id.maincontent, new RoadFragment()).commit();
 
                 }else if (str.equals("生活助手")) {
 
