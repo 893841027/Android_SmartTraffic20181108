@@ -16,6 +16,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".syc.users_manage.ManageMainActivity"></activity>
+        <activity android:name=".syc.personal_center.CenterMainActivity"></activity>
+        <activity android:name=".syc.bus_query.BusMainActivity"></activity>
+        <activity android:name=".syc.personal_center.Tab1Activity"></activity>
+        <activity android:name=".syc.personal_center.Tab2Activity"></activity>
+        <activity android:name=".syc.personal_center.Tab3Activity"></activity>
     </application>
 
 </manifest>
