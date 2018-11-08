@@ -27,6 +27,8 @@ import java.util.List;
 import java.util.Map;
 
 import cn.com.edu.aib.trafficclient_2017gb.R;
+import cn.com.edu.aib.trafficclient_2017gb.zqx.Fragment06.Fragment06;
+import cn.com.edu.aib.trafficclient_2017gb.zqx.Fragment07.Fragment07;
 import cn.com.edu.aib.trafficclient_2017gb.syc.bus_query.BusMainActivity;
 import cn.com.edu.aib.trafficclient_2017gb.syc.personal_center.CenterMainActivity;
 import cn.com.edu.aib.trafficclient_2017gb.syc.users_manage.ManageMainActivity;
@@ -158,13 +160,21 @@ public class Activity_Main extends FragmentActivity {
                     /*getSupportFragmentManager().beginTransaction().replace(R.id.maincontent, new TrafficLight()).commit();
                     tV_title.setText(actionTexts[arg2]);*/
 
-                }else if (str.equals("生活助手")) {
+                } else if (str.equals("生活助手")) {
+                    getSupportFragmentManager()
+                            .beginTransaction()
+                            .replace(R.id.maincontent, new Fragment06())
+                            .commit();
 
+                    tV_title.setText(actionTexts[arg2]);
 
-                }else if (str.equals("生活助手")) {
+                } else if (str.equals("数据分析")) {
+                    getSupportFragmentManager()
+                            .beginTransaction()
+                            .replace(R.id.maincontent, new Fragment07())
+                            .commit();
 
-                }else if (str.equals("数据分析")) {
-
+                    tV_title.setText(actionTexts[arg2]);
 
                 }else if (str.equals("个人中心")) {
                     Intent intent = new Intent(Activity_Main.this, CenterMainActivity.class);
