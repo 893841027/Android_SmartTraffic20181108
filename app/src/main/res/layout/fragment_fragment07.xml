@@ -1,0 +1,64 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:text="平台上有违章车辆和没违章车辆的占比统计"
+        android:textColor="@color/colorBlue"
+        android:textSize="20sp" />
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:padding="10dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal">
+
+        <ImageView
+            android:id="@+id/iv_circle1"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/circle_blue" />
+
+        <ImageView
+            android:id="@+id/iv_circle2"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/circle_white" />
+
+        <ImageView
+            android:id="@+id/iv_circle3"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/circle_white" />
+
+        <ImageView
+            android:id="@+id/iv_circle4"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/circle_white" />
+
+        <ImageView
+            android:id="@+id/iv_circle5"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/circle_white" />
+
+        <ImageView
+            android:id="@+id/iv_circle6"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/circle_white" />
+    </LinearLayout>
+</LinearLayout>

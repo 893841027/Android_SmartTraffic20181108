@@ -26,6 +26,8 @@ import java.util.List;
 import java.util.Map;
 
 import cn.com.edu.aib.trafficclient_2017gb.R;
+import cn.com.edu.aib.trafficclient_2017gb.zqx.Fragment06.Fragment06;
+import cn.com.edu.aib.trafficclient_2017gb.zqx.Fragment07.Fragment07;
 
 /**
  * @author zhaowei
@@ -53,10 +55,10 @@ public class Activity_Main extends FragmentActivity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
 
         setContentView(R.layout.activity_main);
-        slidepanel =  findViewById(R.id.slidingPL);
+        slidepanel = findViewById(R.id.slidingPL);
 
-        listView =  findViewById(R.id.listView1);
-        ivHome =  findViewById(R.id.imageView_home);
+        listView = findViewById(R.id.listView1);
+        ivHome = findViewById(R.id.imageView_home);
         ivHome.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -66,7 +68,7 @@ public class Activity_Main extends FragmentActivity {
         });
 
         iVSliding = findViewById(R.id.imageView_Sliding);
-        tV_title =  findViewById(R.id.tv_title);
+        tV_title = findViewById(R.id.tv_title);
         tV_title.setText(getString(R.string.app_title));
 
 
@@ -127,8 +129,8 @@ public class Activity_Main extends FragmentActivity {
 
             @Override
             public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
-                Map map=actionItems.get(arg2);
-                String str= (String) map.get("action_name");
+                Map map = actionItems.get(arg2);
+                String str = (String) map.get("action_name");
                 Log.e("str", str);
                 tV_title.setText(str);
                 if (str.equals("账户管理")) {
@@ -136,36 +138,43 @@ public class Activity_Main extends FragmentActivity {
                     /*Intent intent = new Intent(Activity_Main.this, PersonMainActivity.class);
                     startActivity(intent);*/
 
-                }else if (str.equals("公交查询")) {
+                } else if (str.equals("公交查询")) {
                     /*getSupportFragmentManager().beginTransaction().replace(R.id.maincontent, new Setting2()).commit();
                     tV_title.setText(actionTexts[arg2]);*/
 
-                }else if (str.equals("红绿灯管理")) {
+                } else if (str.equals("红绿灯管理")) {
 
 
-                }else if (str.equals("车辆违章")) {
+                } else if (str.equals("车辆违章")) {
 
 
+                } else if (str.equals("路况查询")) {
+//                    getSupportFragmentManager().beginTransaction().replace(R.id.maincontent, new TrafficLight()).commit();
+//                    tV_title.setText(actionTexts[arg2]);
 
-                }else if (str.equals("路况查询")) {
-                    /*getSupportFragmentManager().beginTransaction().replace(R.id.maincontent, new TrafficLight()).commit();
-                    tV_title.setText(actionTexts[arg2]);*/
+                } else if (str.equals("生活助手")) {
+                    getSupportFragmentManager()
+                            .beginTransaction()
+                            .replace(R.id.maincontent, new Fragment06())
+                            .commit();
 
-                }else if (str.equals("生活助手")) {
+                    tV_title.setText(actionTexts[arg2]);
+
+                } else if (str.equals("数据分析")) {
+                    getSupportFragmentManager()
+                            .beginTransaction()
+                            .replace(R.id.maincontent, new Fragment07())
+                            .commit();
+
+                    tV_title.setText(actionTexts[arg2]);
+
+                } else if (str.equals("个人中心")) {
 
 
-                }else if (str.equals("生活助手")) {
-
-                }else if (str.equals("数据分析")) {
+                } else if (str.equals("创意")) {
 
 
-                }else if (str.equals("个人中心")) {
-
-
-                }else if (str.equals("创意")) {
-
-
-                }else if (str.equals("用户退出")) {
+                } else if (str.equals("用户退出")) {
                     exitAppDialog();
 
                 } else {
