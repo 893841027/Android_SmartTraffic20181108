@@ -5,6 +5,7 @@ package cn.com.edu.aib.trafficclient_2017gb.origin_code;
 import android.app.AlertDialog;
 import android.app.FragmentManager;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -26,6 +27,9 @@ import java.util.List;
 import java.util.Map;
 
 import cn.com.edu.aib.trafficclient_2017gb.R;
+import cn.com.edu.aib.trafficclient_2017gb.syc.bus_query.BusMainActivity;
+import cn.com.edu.aib.trafficclient_2017gb.syc.personal_center.CenterMainActivity;
+import cn.com.edu.aib.trafficclient_2017gb.syc.users_manage.ManageMainActivity;
 
 /**
  * @author zhaowei
@@ -133,12 +137,15 @@ public class Activity_Main extends FragmentActivity {
                 tV_title.setText(str);
                 if (str.equals("账户管理")) {
 
-                    /*Intent intent = new Intent(Activity_Main.this, PersonMainActivity.class);
-                    startActivity(intent);*/
+                    Intent intent = new Intent(Activity_Main.this, ManageMainActivity.class);
+                    startActivity(intent);
 
                 }else if (str.equals("公交查询")) {
                     /*getSupportFragmentManager().beginTransaction().replace(R.id.maincontent, new Setting2()).commit();
                     tV_title.setText(actionTexts[arg2]);*/
+
+                    Intent intent = new Intent(Activity_Main.this, BusMainActivity.class);
+                    startActivity(intent);
 
                 }else if (str.equals("红绿灯管理")) {
 
@@ -160,6 +167,8 @@ public class Activity_Main extends FragmentActivity {
 
 
                 }else if (str.equals("个人中心")) {
+                    Intent intent = new Intent(Activity_Main.this, CenterMainActivity.class);
+                    startActivity(intent);
 
 
                 }else if (str.equals("创意")) {
