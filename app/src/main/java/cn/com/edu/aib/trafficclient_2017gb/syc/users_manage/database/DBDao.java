@@ -174,7 +174,10 @@ public class DBDao implements DBImpl {
         }
 
         return arrHistory;
+
+
     }
+
 
     @Override
     public ArrayList<CarBean> queryCars(String userName) {

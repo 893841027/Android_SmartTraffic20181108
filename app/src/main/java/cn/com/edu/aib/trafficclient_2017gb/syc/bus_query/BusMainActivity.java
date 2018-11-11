@@ -1,9 +1,14 @@
 package cn.com.edu.aib.trafficclient_2017gb.syc.bus_query;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ExpandableListView;
 import android.widget.LinearLayout;
@@ -17,7 +22,7 @@ import cn.com.edu.aib.trafficclient_2017gb.syc.bus_query.bean.ExpChildBean;
 import cn.com.edu.aib.trafficclient_2017gb.syc.bus_query.bean.ExpGroupBean;
 import cn.com.edu.aib.trafficclient_2017gb.syc.bus_query.view.DialogItemView;
 
-public class BusMainActivity extends AppCompatActivity {
+public class BusMainActivity extends Fragment {
 
     private TextView tv_total;
     private Button btn_detail;
@@ -34,12 +39,12 @@ public class BusMainActivity extends AppCompatActivity {
     private View mView;
     private TextView mTv_sum;
     private AlertDialog mMyDialog;
+    private View view;
 
+    @Nullable
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        getSupportActionBar().hide();
-        setContentView(R.layout.syc_busquery_main);
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        view = inflater.inflate(R.layout.syc_busquery_main,container,false);
 
 
         initView();
@@ -47,38 +52,37 @@ public class BusMainActivity extends AppCompatActivity {
 
 
 
-        final ExpAdapter expAdapter = new ExpAdapter(this,mGroupList);
+        final ExpAdapter expAdapter = new ExpAdapter(getActivity(),mGroupList);
         expListView.setAdapter(expAdapter);
 
         final Thread thread = new Thread(){
             @Override
             public void run() {
                 while(true){
-                try {
-                    Thread.sleep(3000);
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            initData();
-                            //"当前承载能力 : 1211人"
-                            tv_total.setText("当前承载能力 : "+mTotal+"人");
-                            expAdapter.mGroupArr = mGroupList;
-                            expAdapter.notifyDataSetChanged();
-                        }
-                    });
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
+                    try {
+                        Thread.sleep(3000);
+                        getActivity().runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                initData();
+                                //"当前承载能力 : 1211人"
+                                tv_total.setText("当前承载能力 : "+mTotal+"人");
+                                expAdapter.mGroupArr = mGroupList;
+                                expAdapter.notifyDataSetChanged();
+                            }
+                        });
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
 
-            }}
+                }}
         };
 
         thread.start();
 
-
-
-
+        return view;
     }
+
 
     private void initData() {
         //String carNum, int people, int timeArrive, int distance
@@ -139,20 +143,20 @@ public class BusMainActivity extends AppCompatActivity {
     }
 
     private void initView() {
-        tv_total = ((TextView) findViewById(R.id.tv_total));
-        btn_detail = ((Button) findViewById(R.id.btn_detail));
-        expListView = ((ExpandableListView) findViewById(R.id.expListView));
+        tv_total = ((TextView) view.findViewById(R.id.tv_total));
+        btn_detail = ((Button) view.findViewById(R.id.btn_detail));
+        expListView = ((ExpandableListView) view.findViewById(R.id.expListView));
 
         // 这种写法是错误的,因为findViewById是在syc_busquery_main里面找,而不是syc_busquery_dialog
         //mDialog_list = ((LinearLayout) findViewById(R.id.dialog_list));
 
-        mView = View.inflate(this, R.layout.syc_busquery_dialog,null);
+        mView = View.inflate(getActivity(), R.layout.syc_busquery_dialog,null);
         mDialog_list = mView.findViewById(R.id.dialog_list);
         mTv_sum = mView.findViewById(R.id.sum);
     }
 
     public void detail(View view) {
-        mMyDialog = new AlertDialog.Builder(this).create();
+        mMyDialog = new AlertDialog.Builder(getActivity()).create();
 
         int xuhao = 0;
         String busID = "";
@@ -163,7 +167,7 @@ public class BusMainActivity extends AppCompatActivity {
                 busID = mGroupList.get(i).getChildArr().get(j).getCarNum();
                 peoNum = mGroupList.get(i).getChildArr().get(j).getPeople();
 
-                DialogItemView div = new DialogItemView(BusMainActivity.this);
+                DialogItemView div = new DialogItemView(getActivity());
                 div.mTv_busId.setText(busID);
                 div.mTv_id.setText(xuhao+"");
                 div.mTv_peoNun.setText(peoNum+"");
@@ -175,7 +179,7 @@ public class BusMainActivity extends AppCompatActivity {
         mMyDialog.show();
         mMyDialog.getWindow().setContentView(mView);
 
-        mView = View.inflate(this, R.layout.syc_busquery_dialog,null);
+        mView = View.inflate(getActivity(), R.layout.syc_busquery_dialog,null);
         mDialog_list = mView.findViewById(R.id.dialog_list);
     }
 
