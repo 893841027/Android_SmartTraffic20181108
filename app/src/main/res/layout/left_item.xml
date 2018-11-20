@@ -28,6 +28,7 @@
             android:layout_width="5dp"
             android:layout_height="wrap_content" />
         <TextView
+            android:id="@+id/pecc_l_carnum"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="#000"
@@ -48,6 +49,7 @@
             android:layout_height="wrap_content"
             android:text="未处理违章  "/>
         <TextView
+            android:id="@+id/pecc_l_weigui"
             android:textSize="20sp"
             android:textStyle="bold"
             android:textColor="#000"
@@ -78,12 +80,13 @@
             android:layout_height="wrap_content"
             android:text="扣 "/>
         <TextView
+            android:id="@+id/pecc_l_koufen"
             android:textSize="20sp"
             android:textStyle="bold"
             android:textColor="#000"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="2"/>
+            android:text="0"/>
         <TextView
             android:textSize="20sp"
             android:textStyle="bold"
@@ -101,6 +104,7 @@
             android:layout_height="wrap_content"
             android:text="罚款 "/>
         <TextView
+            android:id="@+id/pecc_l_fakuan"
             android:textSize="20sp"
             android:textStyle="bold"
             android:textColor="#000"

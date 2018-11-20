@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,6 +23,8 @@ import java.util.List;
 
 import cn.com.edu.aib.trafficclient_2017gb.R;
 import cn.com.edu.aib.trafficclient_2017gb.osc.utils.SQLHelper;
+
+import static android.support.constraint.Constraints.TAG;
 
 /**
  * Created by teacher on 2018/11/8.
@@ -60,13 +63,13 @@ public class PeccancyQuery extends Fragment{
         rightAdapter = new RightAdapter(getActivity(),rightlist);
         rightview.setAdapter(rightAdapter);
 
-        for(int i = 0 ; i < 10 ; i++){
+        /*for(int i = 0 ; i < 10 ; i++){
             leftlist.add(i);
             rightlist.add(i);
         }
 
         leftAdapter.notifyDataSetChanged();
-        rightAdapter.notifyDataSetChanged();
+        rightAdapter.notifyDataSetChanged();*/
 
 
 
@@ -80,21 +83,21 @@ public class PeccancyQuery extends Fragment{
         queryok.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               // addquery(query_carnum.getText().toString());
-                queryUI.setVisibility(View.GONE);
+                addquery(query_carnum.getText().toString());
+
             }
         });
 
         return view;
     }
-/*
+
     void addquery(String in_catnum){
         boolean exsiti = false;
-        if(leftlist.size()>0){
+        /*if(leftlist.size()>0){
             leftlist.clear();
-        }
+        }*/
         final SQLiteDatabase db = sqlHelper.getReadableDatabase();
-        final Cursor cursor = db.rawQuery("select carnum,count(fukuan) as fukuan,count(koufen) as foufen from peccancy group by carnum",null);
+        final Cursor cursor = db.rawQuery("select * from (select carnum,sum(fakuan) as fakuan,sum(koufen) as koufen, count(*) as weigui from peccancy group by carnum) where carnum like \'%"+in_catnum+"%\'",null);
         cursor.moveToFirst();
 
         for(int i = 0 ; i < cursor.getCount() ; i++){
@@ -104,9 +107,11 @@ public class PeccancyQuery extends Fragment{
                 exsiti = true;
             }
             leftBean.setCarNum(carnum);
-            leftBean.setFukuan(cursor.getInt(cursor.getColumnIndex("fukuan")));
+            leftBean.setFukuan(cursor.getInt(cursor.getColumnIndex("fakuan")));
             leftBean.setKoufen(cursor.getInt(cursor.getColumnIndex("koufen")));
+            leftBean.setWeigui(cursor.getInt(cursor.getColumnIndex("weigui")));
             leftlist.add(leftBean);
+            cursor.moveToNext();
         }
 
         //存在车牌
@@ -116,7 +121,7 @@ public class PeccancyQuery extends Fragment{
             Toast.makeText(getActivity(), "没有该车辆", Toast.LENGTH_SHORT).show();
             return;
         }
-
+        leftAdapter.list = leftlist;
         leftAdapter.notifyDataSetChanged();
 
 
@@ -124,7 +129,8 @@ public class PeccancyQuery extends Fragment{
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String carnum = leftAdapter.list.get(position).getCarNum();
-                Cursor cursor1 = db.rawQuery("select * from peccancy where carnum like \'?\'",new String[]{carnum});
+                Toast.makeText(getActivity(), ""+carnum, Toast.LENGTH_SHORT).show();
+                Cursor cursor1 = db.rawQuery("select * from peccancy where carnum like \'%"+carnum+"%\'",null);
                 if(rightlist.size()>0){
                     rightlist.clear();
                 }
@@ -132,21 +138,23 @@ public class PeccancyQuery extends Fragment{
                     cursor1.moveToFirst();
                     for(int i = 0 ; i < cursor1.getCount() ; i++){
                         RightBean rightBean = new RightBean();
-                        rightBean.setContent(cursor1.getString(cursor.getColumnIndex("content")));
-                        rightBean.setDate(cursor1.getString(cursor.getColumnIndex("date")));
-                        rightBean.setFukuan(cursor1.getInt(cursor.getColumnIndex("fukuan")));
-                        rightBean.setKoufen(cursor1.getInt(cursor.getColumnIndex("koufen")));
+                        rightBean.setContent(cursor1.getString(cursor1.getColumnIndex("content")));
+                        rightBean.setDate(cursor1.getString(cursor1.getColumnIndex("date")));
+                        rightBean.setFukuan(cursor1.getInt(cursor1.getColumnIndex("fakuan")));
+                        rightBean.setKoufen(cursor1.getInt(cursor1.getColumnIndex("koufen")));
                         rightBean.setHandle("未处理");
-                        rightBean.setPosition(cursor1.getString(cursor.getColumnIndex("position")));
+                        rightBean.setPosition(cursor1.getString(cursor1.getColumnIndex("position")));
                         rightlist.add(rightBean);
+                        cursor1.moveToNext();
                     }
                 }else{
                     //todo
                 }
+                rightAdapter.list = rightlist;
                 rightAdapter.notifyDataSetChanged();
             }
         });
 
     }
-*/
+
 }

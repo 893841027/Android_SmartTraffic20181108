@@ -8,6 +8,15 @@ public class LeftBean {
     String carNum;
     int koufen;
     int fukuan;
+    int weigui;
+
+    public int getWeigui() {
+        return weigui;
+    }
+
+    public void setWeigui(int weigui) {
+        this.weigui = weigui;
+    }
 
     public String getCarNum() {
         return carNum;

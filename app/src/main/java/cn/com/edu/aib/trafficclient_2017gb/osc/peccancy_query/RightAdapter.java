@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.TextView;
 
 import java.util.List;
 
@@ -16,7 +17,7 @@ import cn.com.edu.aib.trafficclient_2017gb.R;
 public class RightAdapter extends BaseAdapter{
 
     Activity activity;
-    List list;
+    List<RightBean> list;
 
     public RightAdapter(Activity activity, List list) {
         this.activity = activity;
@@ -41,6 +42,19 @@ public class RightAdapter extends BaseAdapter{
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         convertView = View.inflate(activity, R.layout.right_item,null);
+        TextView date = convertView.findViewById(R.id.pecc_r_date);
+        TextView content = convertView.findViewById(R.id.pecc_r_content);
+        TextView fakuan = convertView.findViewById(R.id.pecc_r_fakuan);
+        TextView koufen = convertView.findViewById(R.id.pecc_r_koufen);
+        TextView pos = convertView.findViewById(R.id.pecc_r_position);
+
+        RightBean item = list.get(position);
+        date.setText(item.getDate().toString());
+        content.setText(item.getContent().toString());
+        fakuan.setText(item.getFukuan()+"");
+        koufen.setText(item.getKoufen()+"");
+        pos.setText(item.getPosition().toString());
+
         return convertView;
     }
 }

@@ -111,7 +111,6 @@ public class TrafficFragment extends Fragment {
                                 data.setRed(Integer.parseInt(diared.getText().toString()));
                                 data.setYellow(Integer.parseInt(diayellow.getText().toString()));
                                 data.setGreen(Integer.parseInt(diagreen.getText().toString()));
-
                                 adapter.notifyDataSetChanged();
 
                             }

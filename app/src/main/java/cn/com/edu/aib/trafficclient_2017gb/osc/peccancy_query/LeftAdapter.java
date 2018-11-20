@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.TextView;
 
 import java.util.List;
 
@@ -16,7 +17,7 @@ import cn.com.edu.aib.trafficclient_2017gb.R;
 public class LeftAdapter extends BaseAdapter{
 
     Activity activity;
-    List list;
+    List<LeftBean> list;
 
     public LeftAdapter(Activity activity, List list) {
         this.activity = activity;
@@ -41,6 +42,15 @@ public class LeftAdapter extends BaseAdapter{
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         convertView = View.inflate(activity, R.layout.left_item,null);
+        TextView chepai = convertView.findViewById(R.id.pecc_l_carnum);
+        TextView weigui = convertView.findViewById(R.id.pecc_l_weigui);
+        TextView koufen = convertView.findViewById(R.id.pecc_l_koufen);
+        TextView fakuan = convertView.findViewById(R.id.pecc_l_fakuan);
+        LeftBean item = list.get(position);
+        chepai.setText(item.getCarNum()+"");
+        fakuan.setText(item.getFukuan()+"");
+        koufen.setText(item.getKoufen()+"");
+        weigui.setText(item.getWeigui()+"");
         return convertView;
     }
 }
